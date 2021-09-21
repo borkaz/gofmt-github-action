@@ -8,8 +8,7 @@ with minor code changes and deprecation warnings removed.
 ## Example Usage
 
 ```yaml
-uses: borkaz/go-fmt-action@v1.0.0
-with:
-  gofmt-path: './src'
-  gofmt-flags: '-l -d'
+uses: borkaz/gofmt-github-action@main
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ````

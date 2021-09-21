@@ -1,0 +1,12 @@
+# https://github.com/sladyn98/auto-go-format
+
+name: 'Apply go fmt formatting'
+description: 'Runs gofmt on Go source code files'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'check-circle'
+  color: 'green'

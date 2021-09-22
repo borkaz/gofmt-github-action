@@ -66,12 +66,13 @@ git fetch origin "$BASE_BRANCH"
 git fetch fork "$HEAD_BRANCH"
 
 URL="https://api.github.com/repos/${BASE_REPO_NAME}/pulls/${PR_NUMBER}/files"
-FILES=$(curl -s -X GET -G "$URL" | jq -r '.[] | .filename')
+FILES=$(curl -s -X GET -H "Authorization: token $GITHUB_TOKEN" -G "$URL" | jq -r '.[] | .filename')
 declare -i count=0
 
 for FILE in $FILES; do
     if [ "${FILE##*.}" = "go" ]; then
         count=$((count+1))
+        # https://pkg.go.dev/cmd/gofmt
         gofmt -w "${FILE}"
     fi
 done
